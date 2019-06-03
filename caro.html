@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h3>Caro Game Simple</h3>
+    <p id="board"></p>
+    <input type="button" value="Change Value" onclick="changeValue()">
+</center>
+<script>
+    let b = document.getElementById("board");
+    let a = [];
+    let data = "";
+    for (let i = 0; i < 9; i++) {
+        a[i] = new Array("*","*","*","*","*","*","*","*","*");
+    }
+    for (let i = 0; i < 9; i++) {
+        data += "<br>";
+        for (let j = 0; j < 9; j++) {
+            data += a[i][j] + "&nbsp;&nbsp;";
+        }
+    }
+    b.innerHTML = data;
+    let turn = 0;
+    function changeValue() {
+        turn++;
+        let value = "";
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        if (a[positionX][positionY]!="*"){
+            alert("Vi tri da duoc danh!");
+            positionX = prompt("X: ");
+            positionY = prompt("Y: ");
+        }
+        if (turn % 2){
+            value = "X";
+        } else {
+            value = "O";
+        }
+        a[positionX][positionY] = value;
+        data = "";
+        for (let i = 0; i < 9; i++) {
+            data += "<br>";
+            for (let j = 0; j < 9; j++) {
+                data += a[i][j] + "&nbsp;&nbsp;";
+            }
+        }
+        b.innerHTML = data;
+    }
+    function checkNgang() {
+
+    }
+</script>
+</body>
+</html>
